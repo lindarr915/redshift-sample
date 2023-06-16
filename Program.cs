@@ -6,6 +6,20 @@ namespace redshift.amazon.com.docsamples
 {
     class ConnectToClusterExample
     {
+
+        private static async Task ReadDataFromRedshiftAsync(int count)
+        {
+            // TODO: Complete the ExecuteNonQueryAsync()
+            // Task<bool>[] ReadDataTask = new Task<bool>[count];
+
+            // for (int i = 0; i < count; i++)
+            // {
+
+            // }
+            // await Task.WhenAll(ReadDataTask);
+
+        }
+        
         public static void Main(string[] args)
         {
 
@@ -13,19 +27,19 @@ namespace redshift.amazon.com.docsamples
             DataTable dt = new DataTable();
 
             // Server, e.g. "examplecluster.xyz.us-west-2.redshift.amazonaws.com"
-            string server = "default.495941451493.ap-northeast-1.redshift-serverless.amazonaws.com";
+            string server = System.Environment.GetEnvironmentVariable("DB_HOST");
 
             // Port, e.g. "5439"
             string port = "5439";
 
             // MasterUserName, e.g. "masteruser".
-            string masterUsername = "familymart_user";
+            string masterUsername = System.Environment.GetEnvironmentVariable("DB_USER");
 
             // MasterUserPassword, e.g. "mypassword".
-            string masterUserPassword = "examplePassword";
+            string masterUserPassword = System.Environment.GetEnvironmentVariable("DB_PASSWORD");
 
             // DBName, e.g. "dev"
-            string DBName = "dev";
+            string DBName = System.Environment.GetEnvironmentVariable("DB_NAME");
 
             // string query = "select * from information_schema.tables;";
             string query = "select 1";
@@ -69,6 +83,10 @@ namespace redshift.amazon.com.docsamples
                 Console.WriteLine(result);
                 conn.Close();
                 // Console.ReadKey();
+
+                // Thread.Sleep(100);
+
+                // TODO: Open a text file to run the SQL query 
             }
             catch (Exception ex)
             {
